@@ -9,13 +9,14 @@ This is a GRPC client package of [cosmos gaia](https://github.com/cosmos/gaia) f
 
 **proto files**
 
-- see [gaia/go.mod at v5.0.8 · cosmos/gaia](https://github.com/cosmos/gaia/blob/v5.0.8/go.mod) for listing related
+- see [gaia/go.mod at v6.0.0 · cosmos/gaia](https://github.com/cosmos/gaia/blob/v6.0.0/go.mod) for listing related
 packages versions.
-- and also [cosmos-sdk/go.mod at v0.42.10](https://github.com/cosmos/cosmos-sdk/blob/v0.42.10/go.mod)
+- and also [cosmos-sdk/go.mod at v0.44.3](https://github.com/cosmos/cosmos-sdk/blob/v0.44.3/go.mod)
 
 ---
 
-- [cosmos-sdk/proto at v0.42.10](https://github.com/cosmos/cosmos-sdk/tree/v0.42.10/proto)
+- [cosmos-sdk/proto at v0.44.3](https://github.com/cosmos/cosmos-sdk/tree/v0.44.3/proto)
+- [ibc-go/proto at v2.0.0](https://github.com/cosmos/ibc-go/tree/v2.0.0/proto)
 - [tendermint/proto/tendermint at v0.34.13](https://github.com/tendermint/tendermint/tree/v0.34.13/proto/tendermint)
 - [cosmos/cosmos-proto](https://github.com/cosmos/cosmos-proto)
 - [ics23/proofs.proto at v0.6.6](https://github.com/confio/ics23/blob/v0.6.6/proofs.proto)
@@ -40,7 +41,7 @@ packages versions.
 
 ```toml
 [dependencies]
-gaia-grpc-client = { version = "5.0.8-beta.1", git = "https://github.com/kumanote/gaia-grpc-client-rs", branch = "main" }
+gaia-grpc-client = { version = "6.0.0-beta.1", git = "https://github.com/kumanote/gaia-grpc-client-rs", branch = "main" }
 ```
 
 **rust files**
