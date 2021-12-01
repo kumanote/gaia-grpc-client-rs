@@ -1,5 +1,5 @@
 pub mod tonic {
-    pub use tonic::{Request, Response};
+    pub use tonic::*;
 }
 
 pub mod prost {
