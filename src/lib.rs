@@ -1,11 +1,11 @@
 pub mod tonic {
-    pub use tonic::{Request, Response};
+    pub use tonic::*;
 }
 
 pub mod prost {
     pub use prost::Message;
     pub mod types {
-        pub use prost_types::Any;
+        pub use prost_types::{Any, Timestamp};
     }
 }
 
