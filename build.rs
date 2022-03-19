@@ -101,7 +101,7 @@ fn main() {
                     "src/proto/ibc/applications/transfer/v1/query.proto",
                     "src/proto/ibc/applications/transfer/v1/genesis.proto",
                 ],
-                &["src/proto/"],
+                &["src/proto/", "src/proto/confio/"],
             )
             .unwrap();
     }

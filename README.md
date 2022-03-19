@@ -9,15 +9,15 @@ This is a GRPC client package of [cosmos gaia](https://github.com/cosmos/gaia) f
 
 **proto files**
 
-- see [gaia/go.mod at v6.0.0 · cosmos/gaia](https://github.com/cosmos/gaia/blob/v6.0.0/go.mod) for listing related
+- see [gaia/go.mod at v6.0.4 · cosmos/gaia](https://github.com/cosmos/gaia/blob/v6.0.4/go.mod) for listing related
 packages versions.
-- and also [cosmos-sdk/go.mod at v0.44.3](https://github.com/cosmos/cosmos-sdk/blob/v0.44.3/go.mod)
+- and also [cosmos-sdk/go.mod at v0.44.6](https://github.com/cosmos/cosmos-sdk/blob/v0.44.6/go.mod)
 
 ---
 
-- [cosmos-sdk/proto at v0.44.3](https://github.com/cosmos/cosmos-sdk/tree/v0.44.3/proto)
-- [ibc-go/proto at v2.0.0](https://github.com/cosmos/ibc-go/tree/v2.0.0/proto)
-- [tendermint/proto/tendermint at v0.34.13](https://github.com/tendermint/tendermint/tree/v0.34.13/proto/tendermint)
+- [cosmos-sdk/proto at v0.44.6](https://github.com/cosmos/cosmos-sdk/tree/v0.44.6/proto)
+- [ibc-go/proto at v2.0.3](https://github.com/cosmos/ibc-go/tree/v2.0.3/proto)
+- [tendermint/proto/tendermint at v0.34.15](https://github.com/tendermint/tendermint/tree/v0.34.15/proto/tendermint)
 - [cosmos/cosmos-proto](https://github.com/cosmos/cosmos-proto)
 - [ics23/proofs.proto at v0.6.6](https://github.com/confio/ics23/blob/v0.6.6/proofs.proto)
 - [gogoproto + castrepeated option](https://github.com/gogo/protobuf/blob/caa11469d65478a29b37145d1bd9b4ae0d33d204/gogoproto/gogo.proto#L144)

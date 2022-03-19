@@ -1,9 +1,9 @@
 [package]
 name = "gaia-grpc-client"
-version = "6.0.0-beta.1"
+version = "6.0.4"
 authors = ["Hiroki Tanaka <support@kumano-te.com>"]
 license = "MIT"
-edition = "2018"
+edition = "2021"
 description = "Rust implementation of cosmos gaia GRPC client."
 repository = "https://github.com/kumanote/gaia-grpc-client-rs"
 readme = "README.md"
