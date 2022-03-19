@@ -41,7 +41,7 @@ packages versions.
 
 ```toml
 [dependencies]
-gaia-grpc-client = { version = "6.0.0-beta.1", git = "https://github.com/kumanote/gaia-grpc-client-rs", branch = "main" }
+gaia-grpc-client = { version = "6.0.4", git = "https://github.com/kumanote/gaia-grpc-client-rs", branch = "main" }
 ```
 
 **rust files**

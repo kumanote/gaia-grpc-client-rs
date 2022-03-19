@@ -488,6 +488,15 @@ pub mod query_client {
         }
     }
 }
+/// SendAuthorization allows the grantee to spend up to spend_limit coins from
+/// the granter's account.
+///
+/// Since: cosmos-sdk 0.43
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct SendAuthorization {
+    #[prost(message, repeated, tag = "1")]
+    pub spend_limit: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+}
 /// GenesisState defines the bank module's genesis state.
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GenesisState {
