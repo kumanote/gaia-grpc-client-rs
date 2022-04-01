@@ -9,16 +9,16 @@ This is a GRPC client package of [cosmos gaia](https://github.com/cosmos/gaia) f
 
 **proto files**
 
-- see [gaia/go.mod at v6.0.4 · cosmos/gaia](https://github.com/cosmos/gaia/blob/v6.0.4/go.mod) for listing related
+- see [gaia/go.mod at v7.0.0 · cosmos/gaia](https://github.com/cosmos/gaia/blob/v7.0.0/go.mod) for listing related
 packages versions.
-- and also [cosmos-sdk/go.mod at v0.44.6](https://github.com/cosmos/cosmos-sdk/blob/v0.44.6/go.mod)
+- and also [cosmos-sdk/go.mod at v0.45.1](https://github.com/cosmos/cosmos-sdk/blob/v0.45.1/go.mod)
 
 ---
 
-- [cosmos-sdk/proto at v0.44.6](https://github.com/cosmos/cosmos-sdk/tree/v0.44.6/proto)
-- [ibc-go/proto at v2.0.3](https://github.com/cosmos/ibc-go/tree/v2.0.3/proto)
-- [tendermint/proto/tendermint at v0.34.15](https://github.com/tendermint/tendermint/tree/v0.34.15/proto/tendermint)
-- [cosmos/cosmos-proto](https://github.com/cosmos/cosmos-proto)
+- [cosmos-sdk/proto at v0.45.1](https://github.com/cosmos/cosmos-sdk/tree/v0.45.1/proto)
+- [ibc-go/proto at v3.0.0](https://github.com/cosmos/ibc-go/tree/v3.0.0/proto)
+- [tendermint/proto/tendermint at v0.34.14](https://github.com/tendermint/tendermint/tree/v0.34.14/proto/tendermint)
+- [cosmos/cosmos-proto](https://github.com/cosmos/cosmos-proto/tree/main/proto/cosmos_proto)
 - [ics23/proofs.proto at v0.6.6](https://github.com/confio/ics23/blob/v0.6.6/proofs.proto)
 - [gogoproto + castrepeated option](https://github.com/gogo/protobuf/blob/caa11469d65478a29b37145d1bd9b4ae0d33d204/gogoproto/gogo.proto#L144)
 - [google/api](https://fuchsia.googlesource.com/third_party/googleapis)
@@ -41,7 +41,7 @@ packages versions.
 
 ```toml
 [dependencies]
-gaia-grpc-client = { version = "6.0.4", git = "https://github.com/kumanote/gaia-grpc-client-rs", branch = "main" }
+gaia-grpc-client = { version = "7.0.0", git = "https://github.com/kumanote/gaia-grpc-client-rs", branch = "main" }
 ```
 
 **rust files**
