@@ -205,9 +205,13 @@ pub struct MsgChannelOpenInit {
 }
 /// MsgChannelOpenInitResponse defines the Msg/ChannelOpenInit response type.
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct MsgChannelOpenInitResponse {}
+pub struct MsgChannelOpenInitResponse {
+    #[prost(string, tag = "1")]
+    pub channel_id: ::prost::alloc::string::String,
+}
 /// MsgChannelOpenInit defines a msg sent by a Relayer to try to open a channel
-/// on Chain B.
+/// on Chain B. The version field within the Channel field has been deprecated. Its
+/// value will be ignored by core IBC.
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgChannelOpenTry {
     #[prost(string, tag = "1")]
@@ -216,6 +220,7 @@ pub struct MsgChannelOpenTry {
     /// the channel identifier of the previous channel in state INIT
     #[prost(string, tag = "2")]
     pub previous_channel_id: ::prost::alloc::string::String,
+    /// NOTE: the version field within the channel has been deprecated. Its value will be ignored by core IBC.
     #[prost(message, optional, tag = "3")]
     pub channel: ::core::option::Option<Channel>,
     #[prost(string, tag = "4")]
@@ -318,7 +323,10 @@ pub struct MsgRecvPacket {
 }
 /// MsgRecvPacketResponse defines the Msg/RecvPacket response type.
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct MsgRecvPacketResponse {}
+pub struct MsgRecvPacketResponse {
+    #[prost(enumeration = "ResponseResultType", tag = "1")]
+    pub result: i32,
+}
 /// MsgTimeout receives timed-out packet
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgTimeout {
@@ -335,7 +343,10 @@ pub struct MsgTimeout {
 }
 /// MsgTimeoutResponse defines the Msg/Timeout response type.
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct MsgTimeoutResponse {}
+pub struct MsgTimeoutResponse {
+    #[prost(enumeration = "ResponseResultType", tag = "1")]
+    pub result: i32,
+}
 /// MsgTimeoutOnClose timed-out packet upon counterparty channel closure.
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgTimeoutOnClose {
@@ -354,7 +365,10 @@ pub struct MsgTimeoutOnClose {
 }
 /// MsgTimeoutOnCloseResponse defines the Msg/TimeoutOnClose response type.
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct MsgTimeoutOnCloseResponse {}
+pub struct MsgTimeoutOnCloseResponse {
+    #[prost(enumeration = "ResponseResultType", tag = "1")]
+    pub result: i32,
+}
 /// MsgAcknowledgement receives incoming IBC acknowledgement
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgAcknowledgement {
@@ -371,7 +385,21 @@ pub struct MsgAcknowledgement {
 }
 /// MsgAcknowledgementResponse defines the Msg/Acknowledgement response type.
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct MsgAcknowledgementResponse {}
+pub struct MsgAcknowledgementResponse {
+    #[prost(enumeration = "ResponseResultType", tag = "1")]
+    pub result: i32,
+}
+/// ResponseResultType defines the possible outcomes of the execution of a message
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[repr(i32)]
+pub enum ResponseResultType {
+    /// Default zero value enumeration
+    ResponseResultUnspecified = 0,
+    /// The message did not call the IBC application callbacks (because, for example, the packet had already been relayed)
+    ResponseResultNoop = 1,
+    /// The message was executed successfully
+    ResponseResultSuccess = 2,
+}
 #[doc = r" Generated client implementations."]
 pub mod msg_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
