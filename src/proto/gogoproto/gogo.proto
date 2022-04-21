@@ -141,7 +141,5 @@ extend google.protobuf.FieldOptions {
   optional bool stdduration = 65011;
   optional bool wktpointer = 65012;
 
-  // https://github.com/gogo/protobuf/blob/caa11469d65478a29b37145d1bd9b4ae0d33d204/gogoproto/gogo.proto#L144
   optional string castrepeated = 65013;
-
 }

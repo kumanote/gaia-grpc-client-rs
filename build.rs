@@ -85,7 +85,6 @@ fn main() {
                     "src/proto/cosmos/base/tendermint/v1beta1/query.proto",
                     "src/proto/cosmos/base/query/v1beta1/pagination.proto",
                     "src/proto/cosmos/base/store/v1beta1/commit_info.proto",
-                    "src/proto/cosmos/base/store/v1beta1/snapshot.proto",
                     "src/proto/cosmos/base/store/v1beta1/listening.proto",
                     "src/proto/cosmos/base/reflection/v1beta1/reflection.proto",
                     "src/proto/cosmos/base/reflection/v2alpha1/reflection.proto",

@@ -237,6 +237,28 @@ pub struct QueryAllBalancesResponse {
     #[prost(message, optional, tag = "2")]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
+/// QuerySpendableBalancesRequest defines the gRPC request structure for querying
+/// an account's spendable balances.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QuerySpendableBalancesRequest {
+    /// address is the address to query spendable balances for.
+    #[prost(string, tag = "1")]
+    pub address: ::prost::alloc::string::String,
+    /// pagination defines an optional pagination for the request.
+    #[prost(message, optional, tag = "2")]
+    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+}
+/// QuerySpendableBalancesResponse defines the gRPC response structure for querying
+/// an account's spendable balances.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QuerySpendableBalancesResponse {
+    /// balances is the spendable balances of all the coins.
+    #[prost(message, repeated, tag = "1")]
+    pub balances: ::prost::alloc::vec::Vec<super::super::base::v1beta1::Coin>,
+    /// pagination defines the pagination in the response.
+    #[prost(message, optional, tag = "2")]
+    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+}
 /// QueryTotalSupplyRequest is the request type for the Query/TotalSupply RPC
 /// method.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -406,6 +428,24 @@ pub mod query_client {
             let codec = tonic::codec::ProstCodec::default();
             let path =
                 http::uri::PathAndQuery::from_static("/cosmos.bank.v1beta1.Query/AllBalances");
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        #[doc = " SpendableBalances queries the spenable balance of all coins for a single"]
+        #[doc = " account."]
+        pub async fn spendable_balances(
+            &mut self,
+            request: impl tonic::IntoRequest<super::QuerySpendableBalancesRequest>,
+        ) -> Result<tonic::Response<super::QuerySpendableBalancesResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/cosmos.bank.v1beta1.Query/SpendableBalances",
+            );
             self.inner.unary(request.into_request(), path, codec).await
         }
         #[doc = " TotalSupply queries the total supply of all coins."]

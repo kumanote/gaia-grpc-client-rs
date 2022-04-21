@@ -1,6 +1,6 @@
 [package]
 name = "gaia-grpc-client"
-version = "7.0.0"
+version = "7.0.1"
 authors = ["Hiroki Tanaka <support@kumano-te.com>"]
 license = "MIT"
 edition = "2021"

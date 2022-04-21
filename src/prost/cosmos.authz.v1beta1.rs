@@ -15,6 +15,21 @@ pub struct Grant {
     #[prost(message, optional, tag = "2")]
     pub expiration: ::core::option::Option<::prost_types::Timestamp>,
 }
+/// GrantAuthorization extends a grant with both the addresses of the grantee and granter.
+/// It is used in genesis.proto and query.proto
+///
+/// Since: cosmos-sdk 0.45.2
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct GrantAuthorization {
+    #[prost(string, tag = "1")]
+    pub granter: ::prost::alloc::string::String,
+    #[prost(string, tag = "2")]
+    pub grantee: ::prost::alloc::string::String,
+    #[prost(message, optional, tag = "3")]
+    pub authorization: ::core::option::Option<::prost_types::Any>,
+    #[prost(message, optional, tag = "4")]
+    pub expiration: ::core::option::Option<::prost_types::Timestamp>,
+}
 /// MsgGrant is a request type for Grant method. It declares authorization to the grantee
 /// on behalf of the granter with the provided expiration time.
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -197,6 +212,44 @@ pub struct QueryGrantsResponse {
     #[prost(message, optional, tag = "2")]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
+/// QueryGranterGrantsRequest is the request type for the Query/GranterGrants RPC method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryGranterGrantsRequest {
+    #[prost(string, tag = "1")]
+    pub granter: ::prost::alloc::string::String,
+    /// pagination defines an pagination for the request.
+    #[prost(message, optional, tag = "2")]
+    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+}
+/// QueryGranterGrantsResponse is the response type for the Query/GranterGrants RPC method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryGranterGrantsResponse {
+    /// grants is a list of grants granted by the granter.
+    #[prost(message, repeated, tag = "1")]
+    pub grants: ::prost::alloc::vec::Vec<GrantAuthorization>,
+    /// pagination defines an pagination for the response.
+    #[prost(message, optional, tag = "2")]
+    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+}
+/// QueryGranteeGrantsRequest is the request type for the Query/IssuedGrants RPC method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryGranteeGrantsRequest {
+    #[prost(string, tag = "1")]
+    pub grantee: ::prost::alloc::string::String,
+    /// pagination defines an pagination for the request.
+    #[prost(message, optional, tag = "2")]
+    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+}
+/// QueryGranteeGrantsResponse is the response type for the Query/GranteeGrants RPC method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryGranteeGrantsResponse {
+    /// grants is a list of grants granted to the grantee.
+    #[prost(message, repeated, tag = "1")]
+    pub grants: ::prost::alloc::vec::Vec<GrantAuthorization>,
+    /// pagination defines an pagination for the response.
+    #[prost(message, optional, tag = "2")]
+    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+}
 #[doc = r" Generated client implementations."]
 pub mod query_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
@@ -273,6 +326,42 @@ pub mod query_client {
             let path = http::uri::PathAndQuery::from_static("/cosmos.authz.v1beta1.Query/Grants");
             self.inner.unary(request.into_request(), path, codec).await
         }
+        #[doc = " GranterGrants returns list of `GrantAuthorization`, granted by granter."]
+        #[doc = ""]
+        #[doc = " Since: cosmos-sdk 0.45.2"]
+        pub async fn granter_grants(
+            &mut self,
+            request: impl tonic::IntoRequest<super::QueryGranterGrantsRequest>,
+        ) -> Result<tonic::Response<super::QueryGranterGrantsResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path =
+                http::uri::PathAndQuery::from_static("/cosmos.authz.v1beta1.Query/GranterGrants");
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        #[doc = " GranteeGrants returns a list of `GrantAuthorization` by grantee."]
+        #[doc = ""]
+        #[doc = " Since: cosmos-sdk 0.45.2"]
+        pub async fn grantee_grants(
+            &mut self,
+            request: impl tonic::IntoRequest<super::QueryGranteeGrantsRequest>,
+        ) -> Result<tonic::Response<super::QueryGranteeGrantsResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path =
+                http::uri::PathAndQuery::from_static("/cosmos.authz.v1beta1.Query/GranteeGrants");
+            self.inner.unary(request.into_request(), path, codec).await
+        }
     }
 }
 /// EventGrant is emitted on Msg/Grant
@@ -306,16 +395,4 @@ pub struct EventRevoke {
 pub struct GenesisState {
     #[prost(message, repeated, tag = "1")]
     pub authorization: ::prost::alloc::vec::Vec<GrantAuthorization>,
-}
-/// GrantAuthorization defines the GenesisState/GrantAuthorization type.
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct GrantAuthorization {
-    #[prost(string, tag = "1")]
-    pub granter: ::prost::alloc::string::String,
-    #[prost(string, tag = "2")]
-    pub grantee: ::prost::alloc::string::String,
-    #[prost(message, optional, tag = "3")]
-    pub authorization: ::core::option::Option<::prost_types::Any>,
-    #[prost(message, optional, tag = "4")]
-    pub expiration: ::core::option::Option<::prost_types::Timestamp>,
 }
