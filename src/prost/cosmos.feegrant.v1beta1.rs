@@ -219,6 +219,25 @@ pub struct QueryAllowancesResponse {
     #[prost(message, optional, tag = "2")]
     pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
 }
+/// QueryAllowancesByGranterRequest is the request type for the Query/AllowancesByGranter RPC method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryAllowancesByGranterRequest {
+    #[prost(string, tag = "1")]
+    pub granter: ::prost::alloc::string::String,
+    /// pagination defines an pagination for the request.
+    #[prost(message, optional, tag = "2")]
+    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageRequest>,
+}
+/// QueryAllowancesByGranterResponse is the response type for the Query/AllowancesByGranter RPC method.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryAllowancesByGranterResponse {
+    /// allowances that have been issued by the granter.
+    #[prost(message, repeated, tag = "1")]
+    pub allowances: ::prost::alloc::vec::Vec<Grant>,
+    /// pagination defines an pagination for the response.
+    #[prost(message, optional, tag = "2")]
+    pub pagination: ::core::option::Option<super::super::base::query::v1beta1::PageResponse>,
+}
 #[doc = r" Generated client implementations."]
 pub mod query_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
@@ -310,6 +329,25 @@ pub mod query_client {
             let codec = tonic::codec::ProstCodec::default();
             let path =
                 http::uri::PathAndQuery::from_static("/cosmos.feegrant.v1beta1.Query/Allowances");
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        #[doc = " AllowancesByGranter returns all the grants given by an address"]
+        #[doc = " Since v0.46"]
+        pub async fn allowances_by_granter(
+            &mut self,
+            request: impl tonic::IntoRequest<super::QueryAllowancesByGranterRequest>,
+        ) -> Result<tonic::Response<super::QueryAllowancesByGranterResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/cosmos.feegrant.v1beta1.Query/AllowancesByGranter",
+            );
             self.inner.unary(request.into_request(), path, codec).await
         }
     }
